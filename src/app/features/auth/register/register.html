@@ -1,0 +1,81 @@
+<div class="auth-wrapper">
+  <div class="reg-container">
+    <div class="reg-header">
+      <h2>Create your <span>ParkSpace</span> account</h2>
+      <p>Single platform for both drivers and property owners.</p>
+    </div>
+    <div class="role-toggle">
+      <div class="slider" [class.shift-right]="roleId() === 1"></div>
+      <button type="button" (click)="roleId.set(2)" [class.active]="roleId() === 2">Customer</button>
+      <button type="button" (click)="roleId.set(1)" [class.active]="roleId() === 1">Owner</button>
+    </div>
+
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="header">
+      <div class="avatar">{{ roleId() === 2 ? '🚗' : '🏠' }}</div>
+      <h2>{{ roleId() === 1 ? 'Owner' : 'Customer' }} Registration</h2>
+    </div>
+        <div class="reg-inputs">
+<input 
+    type="text" 
+    [ngModel]="fullName()" 
+    (ngModelChange)="fullName.set($event)"
+    (blur)="nameTouched.set(true)"
+    [class.invalid]="nameTouched() && !isNameValid()"
+    placeholder="Full Name">
+    @if (nameTouched() && !isNameValid()) {
+    <small class="error-text">
+      Please enter a valid name (at least 3 alphabets).
+    </small>
+  }
+<input 
+      type="tel" 
+      [ngModel]="phoneNumber()" 
+      (ngModelChange)="phoneNumber.set($event)"
+      placeholder="10-digit mobile number">
+    
+    @if (phoneNumber().length > 0 && !isPhoneValid()) {
+      <small class="error-msg">Phone number must be exactly 10 digits.</small>
+    }
+              <input 
+      type="email" 
+      [ngModel]="email()" 
+      (ngModelChange)="email.set($event)" placeholder="Enter Email"
+      [class.error-border]="email().length > 0 && !isEmailValid()">
+    
+    @if (email().length > 0 && !isEmailValid()) {
+      <small class="error-msg">Please enter a valid email address.</small>
+    }
+<input type="password" [ngModel]="password()" (ngModelChange)="password.set($event)" placeholder="Password">
+ @if (password().length > 8 && !isPasswordValid()) {
+      <small class="error-msg">Please enter a valid Password.</small>
+    }
+    <input 
+      type="text" 
+      [ngModel]="city()" 
+      (ngModelChange)="city.set($event)"
+      placeholder="Enter City">
+          <button class="btn-reg customer" 
+    [disabled]="!canSubmit()"
+
+    [style.opacity]="canSubmit() ? 1 : 0.5" (click)="OnRegister()">Register as {{ roleId() === 1 ? 'Owner' : 'Customer' }}</button>
+        </div>
+      </div>
+
+      <!-- <div class="reg-card highlighted">
+        <div class="reg-icon">🏢</div>
+        <h4>Owner Registration</h4>
+        <div class="reg-inputs">
+          <input type="text" placeholder="Full Name">
+          <input type="tel" placeholder="Phone Number">
+          <input type="email" placeholder="Email Address">
+          <input type="password" placeholder="Create Password">
+          <button class="btn-reg owner">Register as Owner</button>
+        </div>
+      </div> -->
+    </div>
+    
+    <p class="bottom-link">Already a member? <a routerLink="/login">Login In here</a></p>
+  </div>
+</div>

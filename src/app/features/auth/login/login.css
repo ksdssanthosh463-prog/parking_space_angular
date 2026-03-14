@@ -1,0 +1,91 @@
+.auth-wrapper {
+  min-height: 100vh;
+  background: var(--theme-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Container Styles */
+.auth-container {
+   background: linear-gradient(135deg, #108a82 0%, #29b87e 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Login Specific Split */
+.auth-info-panel {
+  flex: 1;
+   background: linear-gradient(135deg, #108a82 0%, #29b87e 100%);
+  padding: 40px;
+  border-right: 1px solid #eee;
+}
+
+.auth-info-panel h2 span { color: var(--theme-teal); }
+
+.auth-form-panel {
+  flex: 1.2;
+  padding: 40px;
+     background: linear-gradient(135deg, #108a82 0%, #29b87e 100%);
+
+}
+
+/* Form Elements */
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; }
+.input-group input, .input-group select {
+  width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none;
+}
+
+/* Registration Grid */
+.reg-container { flex-direction: column; padding: 40px; max-width: 1000px; }
+.reg-header { text-align: center; margin-bottom: 30px; }
+.reg-header span { color: var(--theme-teal); font-weight: bold; }
+
+.reg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.reg-card { 
+  background: #fdfdfd; padding: 30px; border-radius: 15px; border: 1px solid #eee; text-align: center;
+}
+.reg-card.highlighted { border: 2px solid var(--theme-blue); background: #f0f7ff; }
+
+.reg-inputs input { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 5px; }
+
+/* Buttons */
+.btn-login {
+  width: 100%; background: var(--theme-blue); color: white; border: none;
+  padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;
+}
+
+.btn-reg {
+  width: 100%; padding: 12px; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;
+}
+.btn-reg.customer { background: var(--theme-teal); }
+.btn-reg.owner { background: var(--theme-blue); }
+
+@media (max-width: 768px) {
+  .auth-container, .reg-grid { flex-direction: column; }
+  .auth-info-panel { display: none; }
+}
+.password-container {
+  position: relative;
+  width: 300px;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-icon {
+ position: absolute;
+    right: 25px;
+    font-size: 19px;
+    top: 69%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
