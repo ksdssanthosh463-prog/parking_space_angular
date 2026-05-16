@@ -1,17 +1,14 @@
 import { inject } from '@angular/core';
-import { Router, type CanActivateFn } from '@angular/router';
-import { GlobalConstants } from '../constants/constants';
+import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuardGuard: CanActivateFn = (route, state) => {
-  const userData = localStorage.getItem(GlobalConstants.Local_Key_Admin);
-  const router=inject(Router)
+  const router = inject(Router);
+  const isLoggedIn = !!localStorage.getItem('token');
 
-  if (userData!=null) {
-     return true;
-
-  }
-  else{
-   router.navigate(['/login']);
+  if (isLoggedIn) {
+    return true;
+  } else {
+    router.navigate(['/login']);
     return false;
   }
 };

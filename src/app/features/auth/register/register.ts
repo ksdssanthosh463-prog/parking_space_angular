@@ -66,8 +66,8 @@ fullName = signal('');
       roleId: this.roleId(),
       city: this.city(),
       isActive: true,
-      createdDate: new Date().toISOString() // Current timestamp in ISO format
-    };
+      createdDate: new Date().toISOString() 
+      };
     this.authService.registerCustomer(payload).subscribe((res:any)=>{
       if(res.message=='User created successfully'){
         alert('User Created');
